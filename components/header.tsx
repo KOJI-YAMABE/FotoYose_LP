@@ -38,7 +38,7 @@ export function Header() {
             ログイン
           </Button>
           <Button className="bg-gray-800 hover:bg-gray-700 text-white font-semibold py-2 px-4 rounded-full">
-            新規登録
+            無料登録
           </Button>
           </div>
         </nav>

@@ -75,14 +75,10 @@ export function PricingSection() {
               <Button className="w-full" size="lg">
                 無料で始める
               </Button>
-              <p className="text-sm text-gray-600 text-center">
-                ※正式リリース後は有料プランへ移行予定です
-              </p>
             </CardFooter>
           </Card>
 
           <div className="mt-8 text-center text-sm text-gray-600">
-            <p>料金体系については、正式版リリース前に改めてご案内させていただきます。</p>
             <p className="mt-2">ベータ版期間中のご利用・フィードバックを心よりお待ちしております。</p>
           </div>
         </motion.div>
