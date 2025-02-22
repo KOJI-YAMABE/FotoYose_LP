@@ -3,7 +3,6 @@
 import { useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { Check } from "lucide-react";
 
 export function HeroSection() {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -38,45 +37,34 @@ export function HeroSection() {
             initial={{ opacity: 0, y: -50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="text-4xl md:text-5xl font-bold text-white"
+            className="text-4xl font-bold text-white max-w-4xl mb-8"
           >
-            未来を変えるサービス
+            「ふたりのもてなし」
+          </motion.h1>
+          <motion.h2
+            initial={{ opacity: 0, y: -50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="text-4xl font-bold text-white max-w-4xl mb-8"
+          >
+            から
+          </motion.h2>
+          <motion.h1
+            initial={{ opacity: 0, y: -50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="text-4xl md:text-5xl font-bold text-white max-w-4xl mb-4"
+          >
+            「みんなが創る祝福のカタチ」
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: -50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-lg text-white mt-4 max-w-2xl"
+            className="text-2xl text-white mt-2 max-w-2xl"
           >
-            あなたのビジネスに革新をもたらす最先端のテクノロジーを体験してください。
+            リアルタイム型自動スライドショー生成サービス
           </motion.p>
-          
-          {/* 特徴リスト：よりデザイン性のあるカード風レイアウト */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4, duration: 0.6 }}
-            className="mt-16 grid grid-cols-1 sm:grid-cols-3 gap-8 w-full max-w-3xl"
-          >
-            <div className="flex flex-col items-center">
-              <div className="flex items-center justify-center w-16 h-16 bg-blue-500 rounded-full mb-4 shadow-lg">
-                <Check className="h-8 w-8 text-white" />
-              </div>
-              <span className="text-white text-lg font-semibold">高品質な映像体験</span>
-            </div>
-            <div className="flex flex-col items-center">
-              <div className="flex items-center justify-center w-16 h-16 bg-blue-500 rounded-full mb-4 shadow-lg">
-                <Check className="h-8 w-8 text-white" />
-              </div>
-              <span className="text-white text-lg font-semibold">革新的なデザイン</span>
-            </div>
-            <div className="flex flex-col items-center">
-              <div className="flex items-center justify-center w-16 h-16 bg-blue-500 rounded-full mb-4 shadow-lg">
-                <Check className="h-8 w-8 text-white" />
-              </div>
-              <span className="text-white text-lg font-semibold">直感的な操作性</span>
-            </div>
-          </motion.div>
 
           {/* CTA ボタン */}
           <motion.div
@@ -85,11 +73,8 @@ export function HeroSection() {
             transition={{ duration: 0.6 }}
             className="flex flex-col sm:flex-row gap-4 mt-12"
           >
-            <Button className="bg-yellow-400 hover:bg-yellow-300 text-gray-800 text-xl font-bold py-8 rounded-lg" size="lg">
-              無料で始める
-            </Button>
-            <Button className="bg-gray-300 hover:bg-gray-400 text-gray-800 text-xl font-bold py-8 rounded-lg" size="lg">
-              詳しく見る
+            <Button className="bg-yellow-400 hover:bg-yellow-300 text-gray-800 text-xl font-bold py-8 px-16 rounded-lg" size="lg">
+              無料で試してみる
             </Button>
           </motion.div>
         </div>

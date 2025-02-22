@@ -11,16 +11,16 @@ export default function Home() {
   return (
     <main className="min-h-screen">
       <div
-      className={`${notoJP.variable} ${adventPro.variable} ${libreBaskerville.variable} ${notoJP.className}`}
-    >
-      <Header />
-      <HeroSection />
-      <FeaturesSection />
-      <ServicesSection />
-      <PricingSection />
-      <ContactSection />
-      <Footer />
-    </div>
+        className={`${notoJP.variable} ${adventPro.variable} ${libreBaskerville.variable} ${notoJP.className}`}
+      >
+        <Header />
+        <HeroSection />
+        <FeaturesSection />
+        {/* <ServicesSection /> */}
+        <PricingSection />
+        <ContactSection />
+        <Footer />
+      </div>
     </main>
   );
 }

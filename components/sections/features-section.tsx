@@ -1,30 +1,34 @@
 "use client";
 
-import { motion } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
-import { Card, CardContent } from '@/components/ui/card';
-import { Wand2, Image as ImageIcon, Clock, Shield } from 'lucide-react';
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+import { Card, CardContent } from "@/components/ui/card";
+// 画像を使用するため、アイコンのインポートは削除しました
 
 const features = [
   {
-    icon: Wand2,
-    title: 'プロフェッショナルな編集',
-    description: '経験豊富な編集者による高品質な仕上がり',
+    photo: "/images/smart_phone2.jpeg", // 適切な画像パスに変更してください
+    title: "スマートフォンから簡単投稿",
+    description:
+      "QRコードを読み取るだけで、ゲストはすぐにアクセスして写真＆メッセージを投稿できます。",
   },
   {
-    icon: ImageIcon,
-    title: '豊富な編集オプション',
-    description: 'カラー調整から高度なレタッチまで幅広く対応',
+    photo: "/images/screen.jpeg",
+    title: "リアルタイムで大画面に表示",
+    description:
+      "投稿された写真やメッセージが次々とスクリーンに登場。ゲストが投稿した瞬間に、みんなで一緒に楽しめる演出が可能です。",
   },
   {
-    icon: Clock,
-    title: '迅速な納品',
-    description: '最短24時間以内の納品で、急ぎのご要望にも対応',
+    photo: "/images/flexible-settings.jpeg",
+    title: "細かな演出設定が可能",
+    description:
+      "写真・メッセージを新郎側・新婦側ごとに集めて表示したり、アニメーションや表示スピードなど、結婚式の雰囲気に合わせて細かく演出を調整できます。",
   },
   {
-    icon: Shield,
-    title: '安心の品質保証',
-    description: '満足いただけない場合は無料で再編集',
+    photo: "/images/data-storage.jpeg",
+    title: "思い出のデータをきちんと保存",
+    description:
+      "投稿された写真やテキストはデータベースに保存。式後にも新郎新婦がじっくり見返せるだけでなく、ゲスト同士でも共有できるアルバムとして活用可能です。",
   },
 ];
 
@@ -63,12 +67,11 @@ export function FeaturesSection() {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            FotoYoseの特徴
-          </h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">FotoYoseとは</h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            プロフェッショナルな技術と、きめ細やかなサービスで
-            あなたの写真を最高の1枚に
+            「Foto（写真）」と「寄せ書き（Yose）」を組み合わせた言葉で、結婚式という特別な日に、参列者みんなの思い出や祝福の声をひとつの場所に“寄せて”集める。
+            <br />
+            リアルタイムで作られていくオンラインの“寄せ書きアルバム”です。
           </p>
         </motion.div>
 
@@ -83,8 +86,14 @@ export function FeaturesSection() {
             <motion.div key={index} variants={itemVariants}>
               <Card className="h-full hover:shadow-lg transition-shadow duration-300">
                 <CardContent className="p-6 text-center">
-                  <feature.icon className="w-12 h-12 mx-auto mb-4 text-primary" />
-                  <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
+                  <h3 className="text-xl font-semibold mb-2">
+                    {feature.title}
+                  </h3>
+                  <img
+                    src={feature.photo}
+                    alt={feature.title}
+                    className="w-60 h-60 mx-auto mb-4 object-cover"
+                  />
                   <p className="text-gray-600">{feature.description}</p>
                 </CardContent>
               </Card>

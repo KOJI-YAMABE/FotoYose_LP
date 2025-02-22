@@ -1,16 +1,19 @@
 "use client";
 
-import { motion } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
-import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import * as z from 'zod';
-import { GoogleReCaptchaProvider, useGoogleReCaptcha } from 'react-google-recaptcha-v3';
-import { Card } from '@/components/ui/card';
-import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
-import { Button } from '@/components/ui/button';
-import { useToast } from '@/hooks/use-toast';
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import * as z from "zod";
+import {
+  GoogleReCaptchaProvider,
+  useGoogleReCaptcha,
+} from "react-google-recaptcha-v3";
+import { Card } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Button } from "@/components/ui/button";
+import { useToast } from "@/hooks/use-toast";
 import {
   Form,
   FormControl,
@@ -18,46 +21,53 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from '@/components/ui/form';
-import { Mail, Phone, MapPin } from 'lucide-react';
+} from "@/components/ui/form";
+import { Mail, Phone, MapPin } from "lucide-react";
 
 const formSchema = z.object({
-  name: z.string().min(2, { message: '名前は2文字以上で入力してください' }),
-  email: z.string().email({ message: '有効なメールアドレスを入力してください' }),
-  phone: z.string().regex(/^[0-9-]{10,}$/, { message: '有効な電話番号を入力してください' }),
-  message: z.string().min(10, { message: 'メッセージは10文字以上で入力してください' }),
+  name: z.string().min(2, { message: "名前は2文字以上で入力してください" }),
+  email: z
+    .string()
+    .email({ message: "有効なメールアドレスを入力してください" }),
+  phone: z
+    .string()
+    .regex(/^[0-9-]{10,}$/, { message: "有効な電話番号を入力してください" }),
+  message: z
+    .string()
+    .min(10, { message: "メッセージは10文字以上で入力してください" }),
 });
 
 function ContactForm() {
   const { executeRecaptcha } = useGoogleReCaptcha();
   const { toast } = useToast();
-  
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      name: '',
-      email: '',
-      phone: '',
-      message: '',
+      name: "",
+      email: "",
+      phone: "",
+      message: "",
     },
   });
 
   const onSubmit = async (data: z.infer<typeof formSchema>) => {
     if (!executeRecaptcha) {
-      console.error('reCAPTCHA not initialized');
+      console.error("reCAPTCHA not initialized");
       return;
     }
 
     try {
-      const token = await executeRecaptcha('contact_form');
-      
+      const token = await executeRecaptcha("contact_form");
+
       // Here you would typically send the form data and reCAPTCHA token to your server
-      console.log('Form data:', data);
-      console.log('reCAPTCHA token:', token);
+      console.log("Form data:", data);
+      console.log("reCAPTCHA token:", token);
 
       toast({
         title: "送信完了",
-        description: "お問い合わせありがとうございます。担当者より順次ご連絡させていただきます。",
+        description:
+          "お問い合わせありがとうございます。担当者より順次ご連絡させていただきます。",
       });
 
       form.reset();
@@ -94,7 +104,11 @@ function ContactForm() {
             <FormItem>
               <FormLabel>メールアドレス</FormLabel>
               <FormControl>
-                <Input type="email" placeholder="example@fotoyose.com" {...field} />
+                <Input
+                  type="email"
+                  placeholder="example@fotoyose.com"
+                  {...field}
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -150,18 +164,8 @@ export function ContactSection() {
   const contactInfo = [
     {
       icon: Mail,
-      title: 'メール',
-      content: 'info@fotoyose.com',
-    },
-    {
-      icon: Phone,
-      title: '電話',
-      content: '03-1234-5678',
-    },
-    {
-      icon: MapPin,
-      title: '所在地',
-      content: '〒100-0001 東京都千代田区1-1-1',
+      title: "メール",
+      content: "fotoyose@gmail.com",
     },
   ];
 
@@ -199,7 +203,9 @@ export function ContactSection() {
                         <item.icon className="h-6 w-6 text-primary" />
                       </div>
                       <div>
-                        <h3 className="font-medium text-gray-900">{item.title}</h3>
+                        <h3 className="font-medium text-gray-900">
+                          {item.title}
+                        </h3>
                         <p className="text-gray-600">{item.content}</p>
                       </div>
                     </div>
@@ -209,10 +215,11 @@ export function ContactSection() {
 
               <div className="bg-gray-50 p-6 rounded-lg">
                 <h3 className="font-medium text-gray-900 mb-2">営業時間</h3>
-                <p className="text-gray-600">
-                  平日: 9:00 - 18:00<br />
+                {/* <p className="text-gray-600">
+                  平日: 9:00 - 18:00
+                  <br />
                   土日祝: 休業
-                </p>
+                </p> */}
                 <p className="text-sm text-gray-500 mt-2">
                   ※お問い合わせフォームは24時間受付しております
                 </p>
